@@ -20,7 +20,7 @@ btn.onclick = function(){
     
     //Capture the response and store it in an variable
     request.onreadystatechange=function(){
-        if(request.readystate ===  XMLHttpRequest.DONE){
+        if (request.readyState ===  XMLHttpRequest.DONE) {
             if(request.status===200){
                 //Render the variable in the correct span
                 var counter = request.responseText;
