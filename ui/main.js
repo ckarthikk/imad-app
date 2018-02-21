@@ -13,7 +13,6 @@ img.onclick = function() {
 };
 
 //Counter Code
-var counter = 0;
 var btn = document.getElementById("ch");
 btn.onclick = function(){
     //Req to counter endpoint
