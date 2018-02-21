@@ -17,11 +17,20 @@ var counter = 0;
 var btn = document.getElementById("ch");
 btn.onclick = function(){
     //Req to counter endpoint
+    var request = new XMLHttpRequest();
     
     //Capture the response and store it in an variable
-    
-    //Render the variable in the correct span
-    counter = counter+1;
-    var cnter = document.getElementById("count");
-    cnter.innerHTML = counter.toString();
+    request.onreadystatechange=function(){
+        if(request.readystate ===  XMLHttpRequest.DONE){
+            if(request.status===200){
+                //Render the variable in the correct span
+                var counter = request.responseText;
+                var cnter = document.getElementById("count");
+                cnter.innerHTML = counter.toString();
+            }
+            
+        }
+    };
+    request.open('GET', 'http://karthik87ck.imad.hasura-app.io/counter',true);
+    request.send(null);
 };
