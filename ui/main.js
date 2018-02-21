@@ -24,12 +24,13 @@ btn.onclick = function(){
             if(request.status===200){
                 //Render the variable in the correct span
                 var counter = request.responseText;
-                var cnter = document.getElementById('count');
-                cnter.innerHTML = counter.toString();
+                var span = document.getElementById('count');
+                span.innerHTML = counter.toString();
             }
             
         }
     };
+    
     request.open('GET', 'http://karthik87ck.imad.hasura-app.io/counter', true);
     request.send(null);
 };
