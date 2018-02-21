@@ -38,7 +38,7 @@ btn.onclick = function(){
 //Req and Resp
 var nameinput = document.getElementById("name");
 var submitbtn = document.getElementById("submitbtn");
-var name = nameinput.value;
+var namee = nameinput.value;
 submitbtn.onclick = function(){
   //Send a request with the name
   //Get the Response as a list and render it in the HTML list
