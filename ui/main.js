@@ -36,17 +36,31 @@ btn.onclick = function(){
 };
 
 //Req and Resp
-var nameinput = document.getElementById("name");
 var submitbtn = document.getElementById("submitbtn");
-var namee = nameinput.value;
 submitbtn.onclick = function(){
-  //Send a request with the name
-  //Get the Response as a list and render it in the HTML list
-  var names = ['list1', 'list2', 'list3'];
-  var list = '';
-  for(var i=0; i<names.length; i++){
-      list += '<li>' + names[i] + '</li>';
-  }
-  var ul = document.getElementById("namelist");
-  ul.innerHTML = list;
+    
+     //Req to counter endpoint
+    var request = new XMLHttpRequest();
+    
+    //Capture the response and store it in an variable
+    request.onreadystatechange=function(){
+        if (request.readyState ===  XMLHttpRequest.DONE) {
+            if(request.status===200){
+                 //Get the Response as a list and render it in the HTML list
+                  var names = request.responseText;
+                  var names = JSON.parse(names);
+                  for(var i=0; i<names.length; i++){
+                      list += '<li>' + names[i] + '</li>';
+                  }
+                  var ul = document.getElementById("namelist");
+                  ul.innerHTML = list;
+            }
+        }
+    };
+    
+    var nameinput = document.getElementById("name");
+    var namee = nameinput.value;
+    //Send a request with the name
+    request.open('GET', 'http://karthik87ck.imad.hasura-app.io/submitname?name=' +namee , true);
+    request.send(null);
 };
